@@ -1,0 +1,18 @@
+Click the start menu or press the windows key
+Type diskpart and press the enter key
+Click yes in the dialog that pops up
+Type list volume into the diskpart window and press the enter key
+Identify the volume that is causing the issue and note the volume number
+Type the following into the diskpart window (replace X with the volume number from the previous step):
+
+select volume X
+attributes volume
+If the hidden attribute is yes then this is your problem. Simply type:
+
+attributes volume clear hidden
+Then press the enter key and windows should automatically assign a drive letter.
+
+If it doesn't it might be that automount is disabled or stuck you can try fixing that with:
+
+automount disable
+automount enable
